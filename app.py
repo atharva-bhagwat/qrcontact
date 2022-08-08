@@ -45,7 +45,8 @@ def download():
     param = qr_code.add('org')
     param.value = company
 
-    qrcode_path = f"{uuid4()}.png"
+    qrcode_path = os.path.join(app.config['QR_CODES'], f"{uuid4()}.png")
+
     qr_code = pyqrcode.create(qr_code.serialize())
     qr_code.png(qrcode_path, scale=5)
     return send_file(qrcode_path, as_attachment=True)
