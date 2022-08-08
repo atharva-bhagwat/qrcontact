@@ -1,4 +1,5 @@
 import os
+import io
 import pyqrcode
 import vobject
 from uuid import uuid4
