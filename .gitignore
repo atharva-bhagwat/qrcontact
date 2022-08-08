@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 *.DS_Store
 credentials/*
+qr_codes/*
 
 # C extensions
 *.so

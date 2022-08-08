@@ -12,6 +12,10 @@ if not os.path.exists(app.config['QR_CODES']):
 
 app.config['SECRET_KEY'] = 'secret_key'
 
+"""
+TODO:
+- Add documentation
+"""
 
 @app.route('/download', methods=['POST'])
 def download():
