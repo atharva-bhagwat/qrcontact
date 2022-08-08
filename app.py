@@ -12,13 +12,13 @@ if not os.path.exists(app.config['QR_CODES']):
 
 app.config['SECRET_KEY'] = 'secret_key'
 
-"""
-TODO:
-- Add documentation
-"""
-
 @app.route('/download', methods=['POST'])
 def download():
+    """Generates and downloads qr code.
+
+    Returns:
+        file: flask.send_file returns contents to the user
+    """
     first_name = request.form['first_name']
     last_name = request.form['last_name']
     full_name = (last_name + ' ' + first_name).rstrip()
@@ -57,6 +57,11 @@ def download():
 
 @app.route('/', methods=['GET'])
 def index():
+    """Landing page.
+
+    Returns:
+        template: Index page
+    """
     return render_template('index.html')
 
 if __name__ == '__main__':
