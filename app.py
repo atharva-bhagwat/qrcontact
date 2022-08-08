@@ -1,17 +1,24 @@
 import os
-import io
 import pyqrcode
 import vobject
+# from cloud_api import *
 from uuid import uuid4
 from flask import Flask, render_template, request, url_for, send_file
+# from google.cloud import storage
+# from google.oauth2 import service_account
 
 app = Flask(__name__)
 app.config['QR_CODES'] = 'qr_codes'
+# app.config['BUCKET_NAME'] = 'qrcontact-qrcodes'
+
+# storage_client = storage.Client(credentials=get_credentials())
+# bucket = storage_client.bucket(app.config['BUCKET_NAME'])
 
 if not os.path.exists(app.config['QR_CODES']):
     os.mkdir(app.config['QR_CODES'])
 
 app.config['SECRET_KEY'] = 'secret_key'
+
 
 @app.route('/download', methods=['POST'])
 def download():
@@ -45,11 +52,14 @@ def download():
     param = qr_code.add('org')
     param.value = company
 
-    qrcode_filename = os.path.join(app.config['QR_CODES'], f"{uuid4()}.png")
+    qrcode_filename = f"{uuid4()}.png"
+
+    qrcode_path = qrcode_filename
+    # qrcode_path = os.path.join(app.config['QR_CODES'], qrcode_filename)
 
     qr_code = pyqrcode.create(qr_code.serialize())
-    qr_code.png(qrcode_filename, scale=5)
-    return send_file(qrcode_filename, as_attachment=True)
+    qr_code.png(qrcode_path, scale=5)
+    return send_file(qrcode_path, as_attachment=True)
 
 @app.route('/', methods=['GET'])
 def index():
@@ -57,3 +67,17 @@ def index():
 
 if __name__ == '__main__':
     app.run()
+
+# 
+# destination_blob_name = 'f97d354d-36f5-4b88-9f18-a599acb88c66.png'
+# source_file_name = 'qr_codes/f97d354d-36f5-4b88-9f18-a599acb88c66.png'
+# credentials = service_account.Credentials.from_service_account_file('qrcontact-358817-357b39193389.json')
+# storage_client = storage.Client(credentials=credentials)
+# bucket = storage_client.bucket(bucket_name)
+# blob = bucket.blob(destination_blob_name)
+
+# blob.upload_from_filename(source_file_name)
+
+# print(
+#     f"File {source_file_name} uploaded to {destination_blob_name}."
+# )

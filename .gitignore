@@ -3,8 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.DS_Store
-qr_codes/
-
+credentials/*
 
 # C extensions
 *.so
