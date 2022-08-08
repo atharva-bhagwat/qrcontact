@@ -5,8 +5,13 @@ header {
     text-align: center;
     padding-top: 10vh;
     padding-bottom: 20vh;
-    /* border: solid red;
-    border-width: 2px; */
+}
+
+footer {
+    justify-content: center;
+    height: 5vh;
+    font-size: 12px;
+    padding-top: 12vh;
 }
 
 body {
@@ -15,8 +20,6 @@ body {
     margin: auto;
     justify-content: center;
     font-family:'Courier New', monospace;
-    /* border: solid green;
-    border-width: 2px; */
 }
 
 a {
