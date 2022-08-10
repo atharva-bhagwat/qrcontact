@@ -1,3 +1,9 @@
+:root {
+    --bg: #121212;
+    --fg: #bdbdbd;
+    --credit: #a5a5a5;
+}
+
 header {
     max-width: 66vw;
     max-height: 40vh;
@@ -5,6 +11,7 @@ header {
     text-align: center;
     padding-top: 10vh;
     padding-bottom: 20vh;
+    color: var(--fg);
 }
 
 footer {
@@ -12,6 +19,7 @@ footer {
     height: 5vh;
     font-size: 12px;
     padding-top: 12vh;
+    color: var(--credit);
 }
 
 body {
@@ -20,15 +28,17 @@ body {
     margin: auto;
     justify-content: center;
     font-family:'Courier New', monospace;
+    color: var(--fg);
+    background-color: var(--bg);
 }
 
 a {
     text-decoration: none;
-    color: #000;
+    color: var(--fg);
 }
 
 a:hover{
-    color: #000;
+    color: var(--fg);
 }
 
 .form-group {
@@ -40,7 +50,6 @@ a:hover{
 .form-group:focus {
     color: #212529;
     background-color: #fff;
-    border-color: #86b7fe;
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
 }
